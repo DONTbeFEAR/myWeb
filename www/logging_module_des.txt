@@ -1,0 +1,27 @@
+Python logging 模块：
+四种配置方式：
+1.basicConfig()
+2.fileConfig()
+3.dictConfig()
+4.listen()
+
+DEMO：
+import logging
+#创建记录器
+logger_name = "example"
+logger = logging.getLogger(logger_name)
+logger.setLevel(logging.DEBUG)
+
+# 创建输出终端
+log_path = "./log.log"
+fh = logging.FileHandler(log_path)
+fh.setLevel(logging.WARN)
+
+# 创建输出格式
+fmt = "%(asctime)-15s %(levelname)s %(filename)s %(lineno)d %(process)d %(message)s"
+datefmt = "%a %d %b %Y %H:%M:%S"
+formatter = logging.Formatter(fmt, datefmt)
+
+# 记录器添加格式及终端
+fh.setFormatter(formatter)
+logger.addHandler(fh)
